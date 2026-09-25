@@ -494,40 +494,41 @@ Socket.IO organization rooms prevent unrelated organizations from receiving each
 Backend Authorization
 
 AI tools execute through backend-controlled operations rather than trusting the frontend.
+```
 
 # Screenshots
 
 ## Dashboard
-<img width="945" height="414" alt="dashboard overview" src="https://github.com/user-attachments/assets/b4e94cfc-d957-419a-b26c-db7e2451318d" />
 
+![Dashboard](docs/screenshots/dashboard%20overview.png)
 
 ## Customer Inbox
-<img width="694" height="386" alt="inbox (1)" src="https://github.com/user-attachments/assets/e8ab72d1-4a16-40b4-a805-b8864b0fbeb9" />
 
+![Customer Inbox](docs/screenshots/inbox%20%281%29.png)
 
 ## Contacts
-<img width="943" height="417" alt="contacts" src="https://github.com/user-attachments/assets/e8c1a64e-7566-4268-ab3d-3cd2b4463df8" />
 
+![Contacts](docs/screenshots/contacts.png)
 
 ## Tickets
-<img width="943" height="417" alt="contacts" src="https://github.com/user-attachments/assets/62763a3c-9a07-4082-8cec-37c0b9d0304b" />
 
+![Tickets](docs/screenshots/tickets%20%281%29.png)
 
 ## Analytics
-<img width="724" height="416" alt="analytics (1)" src="https://github.com/user-attachments/assets/3a79e144-ea86-4c02-b8e3-cd2578a3c3b0" />
 
+![Analytics](docs/screenshots/analytics%20%281%29.png)
 
 ## AI Agent
 
-<img width="422" height="245" alt="AI Agent (1)" src="https://github.com/user-attachments/assets/106fde70-8604-4d4c-8833-10d8312d7d7b" />
+![AI Agent](docs/screenshots/AI%20Agent%20%281%29.png)
 
 ## Audit Logs
-<img width="940" height="418" alt="audit logs" src="https://github.com/user-attachments/assets/7bdead52-0b1e-4f8e-b8a6-216f6dc87171" />
 
+![Audit Logs](docs/screenshots/audit%20logs.png)
 
 ## System Health
-<img width="734" height="293" alt="system health 2" src="https://github.com/user-attachments/assets/33a48600-0885-4507-a3e2-c98540fc3f40" />
 
+![System Health](docs/screenshots/system%20health.png)
 
 Local Development
 Prerequisites
