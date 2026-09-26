@@ -10,8 +10,8 @@ import {
 import { FormsModule } from "@angular/forms";
 import { io, Socket } from "socket.io-client";
 
-const API_URL = "http://localhost:4000/api";
-const SOCKET_URL = "http://localhost:4000";
+const API_URL = "https://ai-customer-operations-hub.onrender.com/api";
+const SOCKET_URL = "https://ai-customer-operations-hub.onrender.com";
 
 
 @Component({
