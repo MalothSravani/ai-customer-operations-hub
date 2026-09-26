@@ -1,7 +1,6 @@
 import { Queue, Worker } from "bullmq";
 import { config } from "./config";
 
-
 /*
  * =========================================================
  * REDIS CONNECTION
@@ -10,23 +9,19 @@ import { config } from "./config";
 
 const connection = {
   host: config.redis.host,
-  port: config.redis.port
+  port: config.redis.port,
+  ...(config.redis.password
+    ? { password: config.redis.password }
+    : {}),
+  ...(config.redis.tls
+    ? { tls: {} }
+    : {})
 };
-
 
 /*
  * =========================================================
  * MESSAGE QUEUE
  * =========================================================
- *
- * This is the single exported queue used by:
- *
- * ai.ts
- * routes.ts
- * other background services
- *
- * IMPORTANT:
- * Do NOT import messageQueue from this file itself.
  */
 
 export const messageQueue =
@@ -36,7 +31,6 @@ export const messageQueue =
       connection,
 
       defaultJobOptions: {
-
         attempts: 3,
 
         backoff: {
@@ -47,12 +41,9 @@ export const messageQueue =
         removeOnComplete: 100,
 
         removeOnFail: 100
-
       }
-
     }
   );
-
 
 /*
  * =========================================================
@@ -62,7 +53,6 @@ export const messageQueue =
 
 export const worker =
   new Worker(
-
     "message-processing",
 
     async (job) => {
@@ -71,13 +61,6 @@ export const worker =
         `Processing job: ${job.name}`,
         job.data
       );
-
-
-      /*
-       * -----------------------------------------------------
-       * CONVERSATION CREATED
-       * -----------------------------------------------------
-       */
 
       switch (job.name) {
 
@@ -88,24 +71,11 @@ export const worker =
             job.data.conversationId
           );
 
-
           return {
-
             ok: true,
-
-            type:
-              "conversation-created"
-
+            type: "conversation-created"
           };
-
         }
-
-
-        /*
-         * ---------------------------------------------------
-         * WHATSAPP INBOUND
-         * ---------------------------------------------------
-         */
 
         case "whatsapp-inbound": {
 
@@ -114,24 +84,11 @@ export const worker =
             job.data.payload
           );
 
-
           return {
-
             ok: true,
-
-            type:
-              "whatsapp-inbound"
-
+            type: "whatsapp-inbound"
           };
-
         }
-
-
-        /*
-         * ---------------------------------------------------
-         * SCHEDULE MEETING
-         * ---------------------------------------------------
-         */
 
         case "schedule-meeting": {
 
@@ -140,47 +97,26 @@ export const worker =
             job.data
           );
 
-
           return {
-
             ok: true,
-
-            type:
-              "schedule-meeting",
-
-            status:
-              "pending_calendar_integration"
-
+            type: "schedule-meeting",
+            status: "pending_calendar_integration"
           };
-
         }
-
-
-        /*
-         * ---------------------------------------------------
-         * UNKNOWN JOB
-         * ---------------------------------------------------
-         */
 
         default:
 
           throw new Error(
             `Unknown job type: ${job.name}`
           );
-
       }
-
     },
 
     {
       connection,
-
       concurrency: 5
-
     }
-
   );
-
 
 /*
  * =========================================================
@@ -198,7 +134,6 @@ worker.on(
 
   }
 );
-
 
 worker.on(
   "failed",

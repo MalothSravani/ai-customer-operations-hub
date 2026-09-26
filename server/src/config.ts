@@ -7,8 +7,10 @@ export const config = {
   jwtSecret: process.env.JWT_SECRET || "development-secret",
   clientUrl: process.env.CLIENT_URL || "http://localhost:4200",
   redis: {
-    host: process.env.REDIS_HOST || "127.0.0.1",
-    port: Number(process.env.REDIS_PORT || 6379)
-  },
+  host: process.env.REDIS_HOST || "127.0.0.1",
+  port: Number(process.env.REDIS_PORT || 6379),
+  password: process.env.REDIS_PASSWORD || "********",
+  tls: process.env.REDIS_TLS === "true"
+},
   whatsappVerifyToken: process.env.WHATSAPP_VERIFY_TOKEN || "change_me"
 };
